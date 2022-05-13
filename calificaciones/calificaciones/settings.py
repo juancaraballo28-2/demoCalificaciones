@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-=helbb4r_wp0y8%=sb9r%g+@kax$qo^t%5+r-c!*e!uk33*#aj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['backend', 'localhost','172.24.41.121','172.24.41.126','172.24.41.127', '172.24.41.129']
+ALLOWED_HOSTS = ['127.0.0.1', 'backend', 'localhost','172.24.41.121','172.24.41.126','172.24.41.127', '172.24.41.129']
 
 
 # Application definition
@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['backend', 'localhost','172.24.41.121','172.24.41.126','172.24.
 INSTALLED_APPS = [
     "simulacionVivienda.apps.SimulacionviviendaConfig",
     "calificacionesPsicologos.apps.CalificacionespsicologosConfig",
+    "usuarios.apps.UsuariosConfig",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

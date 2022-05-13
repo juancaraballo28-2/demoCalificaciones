@@ -15,11 +15,18 @@ def psicologo_view(request,id):
 
     
 @csrf_exempt
-def psicologo_view_noid(request):
+def psicologo_view_noid(request, id_usuario):
     if request.method == 'POST':
-        psicologo_dto = cl.create_psicologo(json.loads(request.body))
+        psicologo_dto = cl.create_psicologo(json.loads(request.body), id_usuario)
         psicologo = serializers.serialize('json', [psicologo_dto,])
         return HttpResponse(psicologo, 'application/json')
+
+@csrf_exempt
+def delete_psicologo_view(request, id,  id_usuario):
+    if request.method == 'DELETE':
+        psicologo_dto = cl.delete_psicologo(id, id_usuario)
+        psicologo = serializers.serialize('json', [psicologo_dto,])
+        return HttpResponse(psicologo, 'application/json')        
 
 @csrf_exempt
 def calificacion_view(request,id_psicologo):
