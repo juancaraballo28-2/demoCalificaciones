@@ -8,7 +8,7 @@ def create_check(request):
     componente = request['componente']
 
     if componente == 'psicologos':
-        r = requests.post('http://'+ip+':8000/calificacionesPsicologos/',
+        r = requests.post('http://'+ip+':8000/calificacionesPsicologos/create/1',
          json={
             "nombre":"Psicologo Prueba HealthCheck",
             "promedio_calificaciones": 0.0,

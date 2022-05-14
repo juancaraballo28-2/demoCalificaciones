@@ -15,6 +15,13 @@ def create_psicologo(nuevo_psicologo, id_usuario):
         suma_calificaciones=nuevo_psicologo["suma_calificaciones"])
         psicologo.save()
         return psicologo  
+    else:
+        psicologo = Psicologo(nombre='Usuario no autorizado', 
+        promedio_calificaciones=None, 
+        cantidad_calificaciones=None, 
+        suma_calificaciones=None)
+        return psicologo 
+
     
 
 def delete_psicologo(id, id_usuario):
@@ -23,6 +30,12 @@ def delete_psicologo(id, id_usuario):
         psicologo = Psicologo.objects.get(pk=id)
         psicologo.delete()
         return psicologo
+    else:
+        psicologo = Psicologo(nombre='Usuario no autorizado', 
+        promedio_calificaciones=None, 
+        cantidad_calificaciones=None, 
+        suma_calificaciones=None)
+        return psicologo     
     
 
 def add_calificacionpsicologo(id, puntuacion):
