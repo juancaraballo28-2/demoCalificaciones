@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"nombre\":\"City U\",\r\n\t\"precio\": 1.000,\r\n\t\"parqueadero\": \"True\",\r\n\t\"pagoPorSemestre\": \"True\"\r\n}",
+					"raw": "{\r\n\t\"nombre\":\"City U\",\r\n\t\"precio\": 1.000,\r\n\t\"parqueadero\": \"True\",\r\n\t\"pagoPorSemestre\": \"True\" ,\r\n    \"distanciaAlaUniversidad\": 2\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -102,6 +102,36 @@
 						"simulacion",
 						"consultarTransportes",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Consulta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"precioMaximo\": 2.5 , \r\n    \"distanciaAlaUniversidad\": 2,\r\n\t\"parqueadero\": true\r\n\t\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/simulacion/consulta/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"simulacion",
+						"consulta",
+						""
 					]
 				}
 			},

@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "043632bc-d6b0-406b-845c-8e27ccc75344",
+		"name": "Health checks",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear health check",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"componente\": \"psicologos\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/healthchecks/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"healthchecks",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get health check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/healthchecks/5",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"healthchecks",
+						"5"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
