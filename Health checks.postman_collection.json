@@ -20,7 +20,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/healthchecks/",
+					"raw": "http://127.0.0.1:8000/healthchecks/create/4",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -31,7 +31,8 @@
 					"port": "8000",
 					"path": [
 						"healthchecks",
-						""
+						"create",
+						"4"
 					]
 				}
 			},

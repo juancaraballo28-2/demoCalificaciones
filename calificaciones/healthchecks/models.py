@@ -4,3 +4,4 @@ class Check(models.Model):
     funcionando = models.BooleanField()
     fecha = models.DateTimeField()
     componente = models.CharField(max_length=100)
+    ipAddress = models.CharField(max_length=100)
