@@ -1,4 +1,4 @@
-"""calificaciones URL Configuration
+"""citas URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -13,16 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from . import views
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls import include
-
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path("calificacionesPsicologos/", include("calificacionesPsicologos.urls")),
-    path("simulacion/", include("simulacionVivienda.urls")),
-    path("healthchecks/", include("healthchecks.urls")),
-    path("usuarios/", include("usuarios.urls")),
-    path('citas/', include("citas.urls"))
+    path('<int:idCita>', views.cita_view_noid, name='cita_view_noid'),
+    path('', views.cita_view, name='cita_view')
 ]
