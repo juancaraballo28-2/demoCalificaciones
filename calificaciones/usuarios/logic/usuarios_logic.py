@@ -1,7 +1,7 @@
 from ..models import Usuario
 
 def get_usuario(id):
-    usuario = Usuario.objects.get(pk=id)
+    usuario = Usuario.objects.using('seguridad').get(pk=id)
     return usuario
 
 def create_usuario(nuevo_usuario):  
@@ -11,7 +11,7 @@ def create_usuario(nuevo_usuario):
         correo = nuevo_usuario['correo'],
         clave = nuevo_usuario['clave'] 
     )  
-    usuario.save()
+    usuario.save(using='seguridad')
     return usuario
 
 

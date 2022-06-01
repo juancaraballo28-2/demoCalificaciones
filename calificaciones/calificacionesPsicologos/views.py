@@ -4,9 +4,11 @@ from django.http import HttpResponse
 from django.core import serializers
 import json
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import api_view, permission_classes
 # Create your views here.
 
 @csrf_exempt
+@api_view(['GET'])
 def psicologo_view(request,id):
     if request.method == 'GET':
         psicologo_dto = cl.get_psicologo(id)
@@ -15,6 +17,7 @@ def psicologo_view(request,id):
 
     
 @csrf_exempt
+@api_view(['POST'])
 def psicologo_view_noid(request, id_usuario):
     if request.method == 'POST':
         psicologo_dto = cl.create_psicologo(json.loads(request.body), id_usuario)

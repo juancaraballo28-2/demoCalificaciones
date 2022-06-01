@@ -31,6 +31,8 @@ ALLOWED_HOSTS = ['127.0.0.1', 'backend', 'localhost','172.24.41.121','172.24.41.
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
+    "auth0authorization.apps.Auth0AuthorizationConfig",
     "citas.apps.CalificacionespsicologosConfig",
     "simulacionVivienda.apps.SimulacionviviendaConfig",
     "calificacionesPsicologos.apps.CalificacionespsicologosConfig",
@@ -52,6 +54,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.RemoteUserMiddleware',
 ]
 
 ROOT_URLCONF = 'calificaciones.urls'
@@ -88,7 +92,16 @@ DATABASES = {
         'PORT': '5432'
         
 
+    },
+    'seguridad':{
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'seguridaddb',
+        'USER': 'postgres',
+        'PASSWORD': 'clavesegura123',
+        'HOST': 'seguridaddb.cb2f9of6cmlg.us-east-1.rds.amazonaws.com',
+        'PORT': '5432'
     }
+
 }
 
 
@@ -132,3 +145,30 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'django.contrib.auth.backends.RemoteUserBackend',
+]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+}
+
+JWT_AUTH = {
+    'JWT_PAYLOAD_GET_USERNAME_HANDLER':
+        'auth0authorization.utils.jwt_get_username_from_payload_handler',
+    'JWT_DECODE_HANDLER':
+        'auth0authorization.utils.jwt_decode_token',
+    'JWT_ALGORITHM': 'RS256',
+    'JWT_AUDIENCE': 'https://consultarpsicologos/api',
+    'JWT_ISSUER': 'https://dev-hbxmjpgk.us.auth0.com/',
+    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
+}

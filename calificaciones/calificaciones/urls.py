@@ -24,5 +24,6 @@ urlpatterns = [
     path("simulacion/", include("simulacionVivienda.urls")),
     path("healthchecks/", include("healthchecks.urls")),
     path("usuarios/", include("usuarios.urls")),
-    path('citas/', include("citas.urls"))
+    path('citas/', include("citas.urls")),
+    path('auth0/', include('auth0authorization.urls'))
 ]
